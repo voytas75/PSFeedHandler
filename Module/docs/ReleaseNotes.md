@@ -1,4 +1,4 @@
-# `PSFH` PowerShell Feed Handler (PSFeedHandler) - release notes
+# PowerShell Feed Handler (PSFeedHandler) - release notes
 
 All notable changes to this project will be documented in this file.
 

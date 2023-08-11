@@ -1764,6 +1764,10 @@ catch {
     Write-Error "An error occurred while checking for updates: $_"
 }
 
+Set-Alias -Name "PSFH" -Value Start-PSFeedHandler
+Set-Alias -Name "PSFeedHandler" -Value Start-PSFeedHandler
+
+
 Write-Host "Welcome to PSFeedHandler!" -ForegroundColor DarkYellow
 Write-Host "Thank you for using PSFH ($($moduleVersion))." -ForegroundColor Yellow
 #Write-Host "Some important changes and informations that may be of interest to you:" -ForegroundColor Yellow
