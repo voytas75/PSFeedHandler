@@ -1,7 +1,17 @@
-Module Name: PSFeedHandler
-Description: The PSFeedHandler module is your ultimate solution for efficient management and exploration of Atom and RSS feeds using PowerShell. Designed to streamline your feed-related tasks, this module offers an array of cmdlets that empower you to seamlessly detect feed types (RSS or Atom), determine feed versions, preview news content, assess connectivity, and effortlessly save feed data for future reference.
+# PSFeedHandler
 
-Features:
+![PowerShell Feed Handler](https://github.com/voytas75/PSFeedHandler/blob/master/images/banerPAF.png?raw=true "PSFeedHandler")
+
+[![status](https://img.shields.io/badge/PROD-v0.0.1-green)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md) &nbsp; [![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler) &nbsp; [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PSFeedHandler)](https://www.powershellgallery.com/packages/PAF)
+
+[![status](https://img.shields.io/badge/DEV-v0.0.2-red)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md)
+
+## Overview
+
+The [PSFeedHandler](https://www.powershellgallery.com/packages/PSFeedHandler) module is your ultimate solution for efficient management and exploration of Atom and RSS feeds using PowerShell. Designed to streamline your feed-related tasks, this module offers an array of cmdlets that empower you to seamlessly detect feed types (RSS or Atom), determine feed versions, preview news content, assess connectivity, and effortlessly save feed data for future reference.
+
+## Features
+
 - Detect Feed Type: Quickly identify whether a feed is an Atom or RSS format, enabling customized handling based on the feed's structure.
 - Detect Feed Version: Gain insights into the version of a feed (such as RSS 2.0 or Atom 1.0), ensuring compatibility and accurate parsing.
 - Show News: Retrieve and display the latest news articles directly from the feed, providing you with up-to-date information.
@@ -10,3 +20,60 @@ Features:
 - Save Feed Data: Seamlessly store feed content locally, allowing for offline exploration, analysis, and archival.
 
 Whether you're a developer, content curator, or data enthusiast, the PSFeedHandler module simplifies the complexities of feed interaction, making it an indispensable tool for a wide range of scenarios.
+
+## Installation and Usage
+
+The module is available on [PowerShell Gallery](https://www.powershellgallery.com/packages/PSFeedHandler).
+
+```powershell
+Install-Module -Name PSFeedHandler
+```
+
+Import module:
+
+```powershell
+Import-Module -Module PSFeedHandler
+```
+
+To get all commands in installed module including cmdlets, functions and aliases:
+
+```powershell
+Get-Command -Module PSFeedHandler
+```
+
+Start module:
+
+```powershell
+Start-PSFeedHandler
+```
+
+or
+
+```powershell
+PSFH
+```
+
+or
+
+```powershell
+PSFeedHandler
+```
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning.
+
+## Contributing
+
+We welcome contributions from the community! Feel free to submit pull requests, report issues, or suggest new features to make the framework even more powerful and user-friendly.
+
+**Clone the Repository:** Clone the PSFeedHandler repository to your local machine.
+
+### License
+
+The PSFeedHandler is released under the [MIT License](https://github.com/voytas75/PSFeedHandler/blob/master/LICENSE).
+
+**Contact:**
+If you have any questions or need assistance, please feel free to reach out to us via [GitHub Issues](https://github.com/voytas75/PSFeedHandler/issues).
+
+Join us on the journey to make PowerShell scripting a truly awesome experience!
