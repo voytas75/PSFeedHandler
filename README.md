@@ -1,11 +1,11 @@
-<div id="row" style="position: relative; float: left; padding-bottom:15px">
-    <div id="images" style="">
-        <div class="image" style="float: left;">
-            <img src="https://github.com/voytas75/PSFeedHandler/blob/master/Module/images/PSFeedHandler100x100.png?raw=true">
-        </div>
+#
+
+<div style="position: relative; float: left; padding-bottom:15px">
+    <div style="float: left;">
+        <img src="https://github.com/voytas75/PSFeedHandler/blob/master/Module/images/PSFeedHandler100x100.png?raw=true">
     </div>
-    <div id="label" style="margin-left: 110px;position: absolute; bottom: 0;">
-        <h1>PSFeedHandler</h1>
+    <div style="margin-left: 110px;position: absolute; bottom: 0;">
+        <H1>PSFeedHandler</H1>
     </div>
 </div>
 <div style="clear:both;"></div>
