@@ -1,6 +1,6 @@
 # PSFeedHandler
 
-![PowerShell Feed Handler](https://github.com/voytas75/PSFeedHandler/blob/master/images/banerPAF.png?raw=true "PSFeedHandler")
+![PowerShell Feed Handler](https://github.com/voytas75/PSFeedHandler/blob/master/Module/images/PSFeedHandler.png?raw=true "PSFeedHandler")
 
 [![status](https://img.shields.io/badge/PROD-v0.0.1-green)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md) &nbsp; [![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler) &nbsp; [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PSFeedHandler)](https://www.powershellgallery.com/packages/PAF)
 
