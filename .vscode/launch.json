@@ -8,7 +8,7 @@
             "name": "PowerShell: PSFeedHandler, TestFeedUrl",
             "type": "PowerShell",
             "request": "launch",
-            "script": "import-module \"D:\\dane\\voytas\\Dokumenty\\visual_studio_code\\github\\PSFeedHandler\\Module\\PSFeedHandler.psd1\"; PSFeedHandler -TestFeedUrl \"https://planet.mysql.com/rss20.xml\""
+            "script": "import-module \"D:\\dane\\voytas\\Dokumenty\\visual_studio_code\\github\\PSFeedHandler\\Module\\PSFeedHandler.psd1\" -Force; Start-PSFeedHandler -TestFeedUrl \"https://planet.mysql.com/rss20.xml\""
         }
     ]
 }
