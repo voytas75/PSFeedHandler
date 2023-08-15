@@ -1552,7 +1552,10 @@ function Start-PSFeedHandler {
 
         [Parameter(ParameterSetName = 'GetSavedFeed', Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string]$GetSavedFeedFileFullName
+        [string]$GetSavedFeedFileFullName,
+
+        [Parameter(ParameterSetName = 'ShowCacheFolder')]
+        [switch]$ShowCacheFolder
     )
     Get-PSFHBanner
     switch ($PSCmdlet.ParameterSetName) {
@@ -1675,6 +1678,12 @@ function Start-PSFeedHandler {
             Get-PSFHFeedDataFromFile -FeedFileFullName $GetSavedFeedFileFullName
             break
         }
+        'ShowCacheFolder' {
+            $FolderName = "FeedNewsTool"
+            $tempfolder = [System.IO.Path]::GetTempPath()
+            $feednewstoolfolderFullName = Join-Path $tempfolder $FolderName
+            Open-PSFHExplorer -PathToOpen $feednewstoolfolderFullName
+        }
         default {
             $helpinfo = @'
 How to use, examples:
@@ -1689,6 +1698,7 @@ PSFeedHandler -SaveFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/head
 PSFeedHandler -GetSavedFeedFileFullName 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
 PSFeedHandler -ValidateFeedListFilename "repository_list.txt" -SaveToTempFeedFolder
     -save - save to temp feed folder
+PSFeedHandler -ShowCacheFolder  
 '@
             Write-Output $helpinfo
             break
@@ -1708,6 +1718,17 @@ function Get-PSFHBanner {
 
 }
 
+function Open-PSFHExplorer {
+    param (
+        [string]$PathToOpen
+    )
+    try {
+        Start-Process explorer.exe -ArgumentList $PathToOpen
+    }
+    catch {
+        Write-Error "An error starting process: $_"
+    }
+}
 
 
 #news9 -TestFeedFromUrl -TestFeedUrl "https://www.theguardian.com/uk/rss"
@@ -1766,7 +1787,6 @@ catch {
 
 Set-Alias -Name "PSFH" -Value Start-PSFeedHandler
 Set-Alias -Name "PSFeedHandler" -Value Start-PSFeedHandler
-
 
 Write-Host "Welcome to PSFeedHandler!" -ForegroundColor DarkYellow
 Write-Host "Thank you for using PSFH ($($moduleVersion))." -ForegroundColor Yellow
