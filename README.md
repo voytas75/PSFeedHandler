@@ -2,7 +2,7 @@
 
 <div style="position: relative; float: left; padding-bottom:15px">
     <div style="float: left;">
-        <img src="https://github.com/voytas75/PSFeedHandler/blob/master/Module/images/PSFeedHandler100x100.png?raw=true">
+        <img src="https://github.com/voytas75/PSFeedHandler/blob/master/PSFeedHandler/images/PSFeedHandler100x100.png?raw=true">
     </div>
     <div style="margin-left: 110px;position: absolute; bottom: 0;">
         <H1>PSFeedHandler</H1>
