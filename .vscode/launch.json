@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "PowerShell: PSFeedHandler, ValidateFeedListFilename - SaveToTempFeedFolder",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "import-module D:\\dane\\voytas\\Dokumenty\\visual_studio_code\\github\\PSFeedHandler\\PSFeedHandler\\PSFeedHandler.psd1 -force; PSFeedHandler -ValidateFeedListFilename \"D:\\dane\\voytas\\Dokumenty\\visual_studio_code\\github\\PSFeedHandler\\feeds\\feeds1.txt\" -SaveToTempFeedFolder"
+        },
+        {
             "name": "PowerShell: PSFeedHandler, TestFeedUrl",
             "type": "PowerShell",
             "request": "launch",

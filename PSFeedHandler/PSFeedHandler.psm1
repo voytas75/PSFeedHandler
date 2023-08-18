@@ -657,7 +657,7 @@ function Test-PSFHRssFeedValidity {
         # Validate and sanitize the input URL
         $validatedUrl = [System.Uri]::EscapeUriString($FeedUrl)
 
-        $feed = [xml](Invoke-WebRequest -Uri $validatedUrl).Content
+        $feed = [xml](Invoke-WebRequest -Uri $validatedUrl -TimeoutSec 10).Content
 
         $feedType = Get-PSFHFeedType -Url $validatedUrl -XMLReader
 
@@ -1400,6 +1400,7 @@ function New-PSFHTempFeedFolder {
         $feednewstoolfolderFullName = Join-Path $tempfolder $FolderName
         if (-not (Test-Path -Path $feednewstoolfolderFullName)) {
             [void](New-Item -Path $feednewstoolfolderFullName -ItemType Directory)
+            Write-Verbose "Feed temp '$feednewstoolfolderFullName' folder was created successfully."
         }
         return $feednewstoolfolderFullName
     }
@@ -1564,11 +1565,15 @@ function Start-PSFeedHandler {
             Write-Verbose "Processing data from file: ${ValidateFeedListFilename}"
             $newsDirectory = $PSScriptRoot
 
-            $repositoryListPath = "${newsDirectory}\${ValidateFeedListFilename}"
+            #$repositoryListPath = "${newsDirectory}\${ValidateFeedListFilename}"
+            $repositoryListPath = ${ValidateFeedListFilename}
 
             $cryptoRssRepos = Find-PSFHCryptoRssRepositories -ListPath $repositoryListPath
 
             foreach ($repo in $cryptoRssRepos) {
+
+                $feedData = @{}
+
                 # Prompt the user for an RSS URL
                 $rssUrl = $repo
 
@@ -1585,13 +1590,13 @@ function Start-PSFeedHandler {
 
                         # Check the URL accessibility
                         #$feedData | Add-Member -TypeName noteproperty - Test-PSFHUrlAccessibility $rssUrl -timeout 2
-                        $feedData | Add-Member -MemberType NoteProperty -NotePropertyName "UrlAccessibility" -NotePropertyValue (Test-PSFHUrlAccessibility $rssUrl -timeout 2)
+                        $feedData | Add-Member -MemberType NoteProperty -Name "UrlAccessibility" -Value (Test-PSFHUrlAccessibility $rssUrl -timeout 2)
                         #$feedData += Test-PSFHRssFeedValidity $rssUrl
-                        $feedData | Add-Member -MemberType NoteProperty -NotePropertyName "RssFeedValidity" -NotePropertyValue (Test-PSFHRssFeedValidity $rssUrl)
+                        $feedData | Add-Member -MemberType NoteProperty -Name "RssFeedValidity" -Value (Test-PSFHRssFeedValidity $rssUrl)
                         # Analyze the feed
                         #$feedData += Invoke-PSFHFeedAnalysis $responseFeed
-                        $feedData | Add-Member -MemberType NoteProperty -NotePropertyName "FeedAnalysis" -NotePropertyValue (Invoke-PSFHFeedAnalysis $responseFee)
-                        if ($Save.IsPresent) {
+                        $feedData | Add-Member -MemberType NoteProperty -Name "FeedAnalysis" -Value (Invoke-PSFHFeedAnalysis $responseFee)
+                        if ($SaveToTempFeedFolder.IsPresent) {
                             try {
                                 #Start-FeedNewsTool -SaveFeedUrl $rssUrl -SaveFeedTimeout 10
                                 Save-PSFHFeed -Url $rssUrl -Timeout 10
@@ -1603,6 +1608,8 @@ function Start-PSFeedHandler {
                         }
                         $feedData
                     } 
+                } else {
+                    Write-Host "Test '$rssUrl' failed" -ForegroundColor DarkRed
                 }
             }
             break
@@ -1613,8 +1620,9 @@ function Start-PSFeedHandler {
             if ((Test-PSFHUrlFormat -Url $TestFeedUrl) -and (Test-PSFHUrlAccessibility -Url $TestFeedUrl -Timeout 5)) {
                 Write-Verbose "Test URL: OK"
                 $objectfeed = Get-PSFHFeedInfo $TestFeedUrl
-
-                $objectfeed | Format-List *
+                [void](Save-PSFHFeed -Url $TestFeedUrl)
+                #$objectfeed | Format-List *
+                $objectfeed
             }
             else {
                 Write-Verbose "Test URL: Failed"
@@ -1771,7 +1779,7 @@ At D:\dane\voytas\Dokumenty\visual_studio_code\lokalne\SkryptyVoytasa_lokalnie\N
 $ModuleName = "PSFeedHandler"
 
 # Get the installed version of the module
-$ModuleVersion = [version]"0.0.1"
+$ModuleVersion = [version]"0.0.2"
 
 # Find the latest version of the module in the PSGallery repository
 $LatestModule = Find-Module -Name $ModuleName -Repository PSGallery
