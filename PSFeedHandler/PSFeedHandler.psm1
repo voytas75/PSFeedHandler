@@ -1608,7 +1608,8 @@ function Start-PSFeedHandler {
                         }
                         $feedData
                     } 
-                } else {
+                }
+                else {
                     Write-Host "Test '$rssUrl' failed" -ForegroundColor DarkRed
                 }
             }
@@ -1730,11 +1731,15 @@ function Open-PSFHExplorer {
     param (
         [string]$PathToOpen
     )
-    try {
-        Start-Process explorer.exe -ArgumentList $PathToOpen
-    }
-    catch {
-        Write-Error "An error starting process: $_"
+    if (test-path $PathToOpen) {
+        try {
+            Start-Process explorer.exe -ArgumentList $PathToOpen
+        }
+        catch {
+            Write-Error "An error starting process: $_"
+        }
+    } else {
+        Write-Information -InformationAction Continue -MessageData "Cache folder does not exist."
     }
 }
 
