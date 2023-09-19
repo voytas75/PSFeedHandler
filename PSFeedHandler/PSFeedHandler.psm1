@@ -1693,6 +1693,7 @@ function Start-PSFeedHandler {
             break
         }
         'GetSavedFeeds' {
+            # lists all files form cache folder
             if ((Test-Path -Path $feednewstoolfolderFullName)) {
                 foreach ($currentItemName in (Get-ChildItem -Path $feednewstoolfolderFullName)) {
                     Write-Host $currentItemName.FullName
