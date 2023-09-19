@@ -1556,7 +1556,12 @@ function Start-PSFeedHandler {
         [string]$GetSavedFeedFileFullName,
 
         [Parameter(ParameterSetName = 'ShowCacheFolder')]
-        [switch]$ShowCacheFolder
+        [switch]$ShowCacheFolder,
+
+        [Parameter(ParameterSetName = 'GetSavedFeeds', Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [switch]$GetSavedFeeds
+        
     )
     Get-PSFHBanner
     switch ($PSCmdlet.ParameterSetName) {
@@ -1687,8 +1692,14 @@ function Start-PSFeedHandler {
             Get-PSFHFeedDataFromFile -FeedFileFullName $GetSavedFeedFileFullName
             break
         }
+        'GetSavedFeeds' {
+            foreach ($currentItemName in (Get-ChildItem -Path $FolderName)) {
+                Write-Host $currentItemName
+            }
+            break
+        }
+
         'ShowCacheFolder' {
-            $FolderName = "FeedNewsTool"
             $tempfolder = [System.IO.Path]::GetTempPath()
             $feednewstoolfolderFullName = Join-Path $tempfolder $FolderName
             Open-PSFHExplorer -PathToOpen $feednewstoolfolderFullName
@@ -1705,6 +1716,7 @@ PSFeedHandler -ShowNewsfromFeedfileRandom
 PSFeedHandler -FeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SavePath .\News\test.txt -Timeout 10
 PSFeedHandler -SaveFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SaveFeedTimeout 10
 PSFeedHandler -GetSavedFeedFileFullName 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
+PSFeedHandler -GetSavedFeeds
 PSFeedHandler -ValidateFeedListFilename "repository_list.txt" -SaveToTempFeedFolder
     -save - save to temp feed folder
 PSFeedHandler -ShowCacheFolder  
@@ -1742,6 +1754,9 @@ function Open-PSFHExplorer {
         Write-Information -InformationAction Continue -MessageData "Cache folder does not exist."
     }
 }
+
+
+$FolderName = "FeedNewsTool"
 
 
 #news9 -TestFeedFromUrl -TestFeedUrl "https://www.theguardian.com/uk/rss"
