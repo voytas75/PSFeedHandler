@@ -1693,15 +1693,16 @@ function Start-PSFeedHandler {
             break
         }
         'GetSavedFeeds' {
-            foreach ($currentItemName in (Get-ChildItem -Path $FolderName)) {
-                Write-Host $currentItemName
+            if ((Test-Path -Path $feednewstoolfolderFullName)) {
+                foreach ($currentItemName in (Get-ChildItem -Path $feednewstoolfolderFullName)) {
+                    Write-Host $currentItemName.FullName
+                }
+            } else {
+                Write-Host "No save feeds."
             }
             break
         }
-
         'ShowCacheFolder' {
-            $tempfolder = [System.IO.Path]::GetTempPath()
-            $feednewstoolfolderFullName = Join-Path $tempfolder $FolderName
             Open-PSFHExplorer -PathToOpen $feednewstoolfolderFullName
         }
         default {
@@ -1750,13 +1751,16 @@ function Open-PSFHExplorer {
         catch {
             Write-Error "An error starting process: $_"
         }
-    } else {
+    }
+    else {
         Write-Information -InformationAction Continue -MessageData "Cache folder does not exist."
     }
 }
 
 
 $FolderName = "FeedNewsTool"
+$tempfolder = [System.IO.Path]::GetTempPath()
+$feednewstoolfolderFullName = Join-Path $tempfolder $FolderName
 
 
 #news9 -TestFeedFromUrl -TestFeedUrl "https://www.theguardian.com/uk/rss"
