@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 
 - show cache folder
+- `ShowNewsfromFeedfileRandom`
 
 ## [0.0.1] - 2023.08.11
 

@@ -1486,6 +1486,9 @@ function Start-PSFeedHandler {
 .PARAMETER GetSavedFeed
     Specifies that the function should retrieve a saved feed.
 
+.PARAMETER GetSavedFeeds
+    Retrieve all saved feeds.
+
 .PARAMETER GetSavedFeedFileFullName
     Specifies the file path of the saved feed to retrieve. This parameter is mandatory when 'GetSavedFeed' is used.
 #>
@@ -1659,7 +1662,7 @@ function Start-PSFeedHandler {
         }
         'ShowNewsfromFeedfileRandom' {
             #$tempfolder = [System.IO.Path]::GetTempPath()
-            $feednewstoolfolder = "feednewstool"
+            $feednewstoolfolder = $FolderName
             #$feednewstoolfolderFullName = Join-Path $tempfolder $feednewstoolfolder
             $tempFeedFolder = New-PSFHTempFeedFolder -FolderName $feednewstoolfolder
             write-host "News feed folder: ""$tempFeedFolder""" -ForegroundColor DarkYellow
