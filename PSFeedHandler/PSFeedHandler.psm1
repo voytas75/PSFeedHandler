@@ -1712,19 +1712,21 @@ function Start-PSFeedHandler {
         default {
             $helpinfo = @'
 How to use, examples:
-PSFeedHandler -TestFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf"
-PSFeedHandler -InputPath .\News\feed_info2.csv -OutputPath .\News\feed_info3.csv
-PSFeedHandler -TestUrlFormat "http://gigaom.com/feed/"
-PSFeedHandler -ShowNewsUrlFeed "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -LastNewsCount 5
-PSFeedHandler -ShowNewsfromFeed 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
-PSFeedHandler -ShowNewsfromFeedfileRandom
-PSFeedHandler -FeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SavePath .\News\test.txt -Timeout 10
-PSFeedHandler -SaveFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SaveFeedTimeout 10
-PSFeedHandler -GetSavedFeedFileFullName 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
-PSFeedHandler -GetSavedFeeds
-PSFeedHandler -ValidateFeedListFilename "repository_list.txt" -SaveToTempFeedFolder
-    -save - save to temp feed folder
-PSFeedHandler -ShowCacheFolder  
+[1] PSFeedHandler -TestFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf"
+[2] PSFeedHandler -InputPath .\News\feed_info2.csv -OutputPath .\News\feed_info3.csv
+[3] PSFeedHandler -TestUrlFormat "http://gigaom.com/feed/"
+[4] PSFeedHandler -ShowNewsUrlFeed "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -LastNewsCount 5
+[5] PSFeedHandler -ShowNewsfromFeed 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
+[6] PSFeedHandler -ShowNewsfromFeedfileRandom
+[7] PSFeedHandler -FeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SavePath .\News\test.txt -Timeout 10
+[8] PSFeedHandler -SaveFeedUrl "http://allafrica.com/tools/headlines/rdf/latest/headlines.rdf" -SaveFeedTimeout 10
+[9] PSFeedHandler -GetSavedFeedFileFullName 'C:\Users\voytas\AppData\Local\Temp\FeedNewsTool\allafrica_com_tools_headlines_rdf_latest_headlines_rdf.feed.tmp'
+[10] PSFeedHandler -GetSavedFeeds
+[11] PSFeedHandler -ValidateFeedListFilename "repository_list.txt" -SaveToTempFeedFolder
+[11] PSFeedHandler -ShowCacheFolder  
+
+
+
 '@
             Write-Output $helpinfo
             break
@@ -1761,6 +1763,7 @@ function Open-PSFHExplorer {
     }
 }
 
+Clear-Host
 
 $FolderName = "FeedNewsTool"
 $tempfolder = [System.IO.Path]::GetTempPath()

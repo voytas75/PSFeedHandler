@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - show cache folder
 - `ShowNewsfromFeedfileRandom`
+- menu items
 
 ## [0.0.1] - 2023.08.11
 
