@@ -12,7 +12,7 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A6KYBUS)
 
-[![status](https://img.shields.io/badge/PROD-v0.0.1-green)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md) &nbsp; [![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler) &nbsp; [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler)
+[![status](https://img.shields.io/badge/PROD-v0.0.1-green)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md) &nbsp; [![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler) &nbsp; [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PSFeedHandler)](https://www.powershellgallery.com/packages/PSFeedHandler) &nbsp; [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6a39e86a110b49f3884a8f918045b2c3)](https://app.codacy.com/gh/voytas75/PSFeedHandler/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 [![status](https://img.shields.io/badge/DEV-v0.0.2-red)](https://github.com/voytas75/PSFeedHandler/blob/master/Module/docs/ReleaseNotes.md)
 
