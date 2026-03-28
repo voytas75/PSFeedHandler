@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  powershell-module-static-smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Parse PowerShell module files
+        shell: pwsh
+        run: |
+          $targets = @(
+            './PSFeedHandler/PSFeedHandler.psd1',
+            './PSFeedHandler/PSFeedHandler.psm1'
+          )
+
+          foreach ($path in $targets) {
+            $parseErrors = $null
+            $tokens = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $path), [ref]$tokens, [ref]$parseErrors)
+            if ($parseErrors.Count -gt 0) {
+              $parseErrors | ForEach-Object { Write-Error ("{0}: {1}" -f $path, $_.Message) }
+              exit 1
+            }
+          }
+
+          Write-Host 'PSFeedHandler static PowerShell parse checks passed.'
+
+# Intentionally lightweight:
+# - validates the module manifest and main module file parse cleanly
+# - avoids fake network/feed-runtime claims in default CI
